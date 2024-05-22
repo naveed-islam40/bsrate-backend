@@ -25,7 +25,7 @@ router.patch('/update-employee/:id', updateEmployee);
 router.get("/get/admin/employee/:id", getEmployeesByAdminId)
 
 
-// router.post('/companies/:companyId/employees/upload', upload.single('file'), uploadEmployees);
+router.post('/companies/:companyId/employees/upload', upload.single('file'), uploadEmployees);
 
 router.get('/employees/:companyId', getEmployeesByCompanyId);
 
