@@ -135,40 +135,7 @@ exports.getAdmins = asyncHandler(async (req, res) => {
         return res.status(500).json({ message: "Failed to fetch admins", error: error.message });
     }
 });
-// exports.resetPasswordEmail = asyncHandler(async (req, res) => {
-//     const { email } = req.body;
 
-//     try {
-//         const user = await Admin.findOne({ email });
-//         if (!user) {
-//             return res.status(404).json({ message: "User not found" });
-//         }
-
-//         const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: "20min" });
-//         const resetLink = `${process.env.FRONTEND_URL}/admin/reset-new-password/${token}`;
-//         const message = `Change your password using the provided link. This link will expire in 20 minutes: ${resetLink}`;
-
-//         const mailOptions = {
-//             from: process.env.EMAIL_HOST,
-//             to: user.email,
-//             subject: "Reset Password",
-//             text: message
-//         };
-
-//         transport.sendMail(mailOptions, function (error, info) {
-//             if (error) {
-//                 console.error(error);
-//                 return res.status(500).json({ message: "Failed to send reset password email", error: error.message });
-//             } else {
-//                 console.log("Reset password email sent:", info.response);
-//                 return res.status(200).json({ message: "Reset password email sent successfully" });
-//             }
-//         });
-//     } catch (error) {
-//         console.error(error);
-//         return res.status(500).json({ message: "Error resetting password", error: error.message });
-//     }
-// });
 let defaultClient = SibApiV3Sdk.ApiClient.instance;
 let apiKey = defaultClient.authentications['api-key'];
 apiKey.apiKey = process.env.SENDGRID_API_KEY;
